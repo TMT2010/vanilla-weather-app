@@ -57,23 +57,45 @@ search("Charlotte");
 let searchBox = document.querySelector("#searchForm");
 searchBox.addEventListener("submit", submitCity);
 
-function displayTemp(response) {
-  console.log();
-  let temp = Math.round(response.data.main.temp);
+function displayForecast(response) {
+  let forecast = response.data.daily;
 
-  let currentLocation = document.querySelector("#locationButton");
-  currentLocation.innerHTML = temp;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+      <div class="col-2">
+        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> ${Math.round(
+            forecastDay.temp.max
+          )}° </span>
+          <span class="weather-forecast-temperature-min"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span>
+        </div>
+      </div>
+  `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
-function showLocation(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let units = "imperial";
-  let apiKey = "c9a1d00cde81ec7b52d8f92a4b7a5348";
-  let endPoint = "https://api.openweathermap.org/data/2.5/weather?";
-  let apiUrl = `${endPoint}lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-
-  axios.get(apiUrl).then(displayTemp);
+function getForecast(coordinates) {
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
-
-navigator.geolocation.getCurrentPosition(showLocation);
