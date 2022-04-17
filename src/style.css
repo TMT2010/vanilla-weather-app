@@ -54,11 +54,6 @@ h1 {
   color: #434649;
 }
 
-#celsiusLink:hover,
-#fahrenheitLink:hover {
-  text-decoration: none;
-}
-
 .phw {
   list-style: none;
   display: inline-block;
