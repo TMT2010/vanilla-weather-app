@@ -2,7 +2,7 @@
   margin: 100px 200px;
   border-radius: 10px;
   border: 0.1px solid rgb(143, 143, 143);
-  padding: 55px 30px 70px 50px;
+  padding: 55px 40px 43px 45px;
   max-width: 705px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -71,11 +71,7 @@ h1 {
 }
 
 hr {
-  margin-top: 50px;
-}
-
-#five-day-forecast {
-  text-align: center;
+  margin-top: 35px;
 }
 
 .weekly-forecast {
@@ -83,8 +79,13 @@ hr {
   padding-top: 25px;
 }
 
-.low-hi {
-  font-size: 12px;
+.lo-hi {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.low {
+  opacity: 0.6;
 }
 
 #github-link {
