@@ -15,6 +15,29 @@ function formatDate(date) {
   return `${day} ${hour}:${min}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#day-forecast");
+  let days = ["Sun", "Mon", "Tues", "Wed"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+      <div class="five-day-forecast">${day}</div>
+            <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" alt="sunny" width="55"
+            />
+            <div class="lo-hi">
+             <span class="low"> 45°
+               </span>
+               <span class="hi">56°</span>
+             </div>
+          </div>`;
+  });
+  forecastHTML = forecastElement + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let dateElement = document.querySelector("#todaysDate");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
@@ -58,6 +81,9 @@ function getWeather(response) {
 function displayCelsius(event) {
   event.preventDefault();
   let tempElement = document.querySelector(".main-temp");
+
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let celsiusTemp = ((tempElement.innerHTML - 32) * 5) / 9;
   tempElement.innerHTML = Math.round(celsiusTemp);
 }
@@ -68,6 +94,9 @@ celsiusLink.addEventListener("click", displayCelsius);
 function displayfahrenheit(event) {
   event.preventDefault();
   let tempElement = document.querySelector(".main-temp");
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let fahrenheitTemp = (tempElement.innerHTML * 9) / 5 + 32;
   tempElement.innerHTML = Math.round(fahrenheitTemp);
 }
@@ -90,3 +119,4 @@ function submitCity(event) {
 search("Charlotte");
 let searchBox = document.querySelector("#searchForm");
 searchBox.addEventListener("submit", submitCity);
+displayForecast();
