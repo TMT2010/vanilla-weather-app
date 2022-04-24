@@ -25,7 +25,7 @@ function displayForecast() {
       forecastHTML +
       `<div class="col-2">
       <div class="five-day-forecast">${day}</div>
-            <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" alt="sunny" width="55"
+            <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" alt="" width="55"
             />
             <div class="lo-hi">
              <span class="low"> 45°
