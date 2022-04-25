@@ -17,7 +17,7 @@ function formatDate(date) {
 
 function displayForecast() {
   let forecastElement = document.querySelector("#day-forecast");
-  let days = ["Sun", "Mon", "Tues", "Wed"];
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs"];
 
   let forecastHTML = `<div class="row">`;
   days.forEach(function (day) {
@@ -34,7 +34,7 @@ function displayForecast() {
              </div>
           </div>`;
   });
-  forecastHTML = forecastElement + `</div>`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
