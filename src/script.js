@@ -39,9 +39,13 @@ function displayForecast(response) {
             }@2x.png" alt="sunny" width="55"
             />
             <div class="lo-hi">
-             <span class="low"> ${Math.round(forecastDay.temp.min)}°
+             <span class="low"> ${
+               Math.round((forecastDay.temp.min * 9) / 5) + 32
+             }°
                </span>
-               <span class="hi">${Math.round(forecastDay.temp.max)}°</span>
+               <span class="hi">${
+                 Math.round((forecastDay.temp.max * 9) / 5) + 32
+               }°</span>
              </div>
           </div>`;
     }
